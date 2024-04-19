@@ -29,8 +29,6 @@ input[type="text"] {
   background-color: rgb(80, 67, 223);
   border: none;
   color: rgb(226, 226, 226);
-  /* border-bottom: 1px solid white;
-      border-right: 1px solid white; */
 }
 
 input[type="text"]:active {
