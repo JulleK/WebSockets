@@ -1,20 +1,18 @@
-const ws = new WebSocket("ws://localhost:8080");
+const socket = io("ws://localhost:8080");
 
 const messageForm = document.querySelector(".message-form");
+const messageInput = document.querySelector(".message-input");
 const messageDisplay = document.querySelector("#messages");
 
 messageForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  let userMessage = event.target[0].value;
+  let userMessage = messageInput.value;
   ws.send(userMessage);
 });
 
-ws.addEventListener("open", () => {
-  console.log("connection to wss open");
-});
-
-ws.addEventListener("message", (event) => {
-  let message = event.data;
+// websocket config
+socket.on("message", (data) => {
+  let message = data;
   messageDisplay.innerHTML += `<li class="message">${message}</li>`;
 });
 
