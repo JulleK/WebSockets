@@ -1,23 +1,25 @@
+import { useEffect } from "react";
 import "./App.css";
+import { io } from "socket.io-client";
+const socket = io("ws://localhost:3000");
 
 export default function App() {
+  // useEffect(() => {}, []);
   return (
     <>
       <div className="wrapper">
-        <form action="" className="message-form">
+        <div className="message-form">
           <input
             type="text"
             name="message"
             placeholder="Message"
             className="message-input"
           />
-          <input type="submit" value="Send message" />
-        </form>
+          <button className="message-submit">Send Message</button>
+        </div>
       </div>
 
       <ul id="messages"></ul>
-
-      {/* <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script> */}
     </>
   );
 }
