@@ -36,7 +36,7 @@ input[type="text"]:active {
   outline: none;
 }
 
-input[type="submit"] {
+.message-submit {
   font-size: 30px;
   background-color: rgb(80, 67, 223);
   border: none;
@@ -46,7 +46,7 @@ input[type="submit"] {
   transition: all 100ms ease-in;
 }
 
-input[type="submit"]:hover {
+.message-submit:hover {
   transform: scale(1.05);
   cursor: pointer;
   color: white;
