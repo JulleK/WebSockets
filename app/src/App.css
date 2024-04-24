@@ -52,7 +52,7 @@ input[type="text"]:active {
   color: white;
 }
 
-#messages {
+.messages-list {
   color: white;
   margin: 5% 0;
   text-align: center;
