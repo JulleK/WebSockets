@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { io } from "socket.io-client";
 const socket = io("ws://localhost:3000");
-import Message from "./message";
+import MessagesList from "./MessagesList";
 
 export default function App() {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -46,11 +46,7 @@ export default function App() {
         </div>
       </div>
 
-      <ul id="messages">
-        {messages.map((message, idx) => {
-          return <Message text={message} key={idx} />;
-        })}
-      </ul>
+      <MessagesList messages={messages} />
     </>
   );
 }
