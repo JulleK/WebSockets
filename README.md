@@ -1,6 +1,6 @@
 ## General Info
 
-This is a simple Web Socket chat app created with Node.js and Socket.io
+This is a simple Web Socket chat app created with Node.js, Socket.io and React.js
 
 Maybe I will add Mongo.db later
 
