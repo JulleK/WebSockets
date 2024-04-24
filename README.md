@@ -10,6 +10,5 @@ To run this project, install it locally using npm:
 
 ```
 $ npm install
-$ cd server
 $ node index.js
 ```
