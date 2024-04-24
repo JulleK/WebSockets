@@ -22,7 +22,6 @@ export default function App() {
   const updateMessages = (newMessage) => {
     setMessages((oldMessages) => [...oldMessages, newMessage]);
     console.log(`received: ${newMessage}`);
-    console.log(messages);
   };
   const sendMessage = () => {
     socket.emit("message", currentMessage);
