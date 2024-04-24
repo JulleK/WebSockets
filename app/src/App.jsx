@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { io } from "socket.io-client";
 const socket = io("ws://localhost:3000");
+import Message from "./message";
 
 export default function App() {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -9,18 +10,19 @@ export default function App() {
   useEffect(() => {
     socket.on("connect", () => {
       console.log("Socket connection estabilished");
-      socket.on("message", (newMessage) => {
-        messages.push(newMessage);
-        setMessages([...messages]);
-        console.log(newMessage);
-        console.log(messages);
-        console.log("-------------------");
-      });
     });
-  }, [messages]);
+    socket.on("message", (newMessage) => {
+      updateMessages(newMessage);
+    });
+  }, []);
 
-  const updateMessage = (event) => {
+  const updateMessageInput = (event) => {
     setCurrentMessage(event.target.value);
+  };
+  const updateMessages = (newMessage) => {
+    setMessages((oldMessages) => [...oldMessages, newMessage]);
+    console.log(`received: ${newMessage}`);
+    console.log(messages);
   };
   const sendMessage = () => {
     socket.emit("message", currentMessage);
@@ -36,7 +38,7 @@ export default function App() {
             placeholder="Message"
             className="message-input"
             value={currentMessage}
-            onChange={updateMessage}
+            onChange={updateMessageInput}
           />
           <button className="message-submit" onClick={sendMessage}>
             Send Message
@@ -46,11 +48,7 @@ export default function App() {
 
       <ul id="messages">
         {messages.map((message, idx) => {
-          return (
-            <li key={idx} className="message">
-              {message}
-            </li>
-          );
+          return <Message text={message} key={idx} />;
         })}
       </ul>
     </>
